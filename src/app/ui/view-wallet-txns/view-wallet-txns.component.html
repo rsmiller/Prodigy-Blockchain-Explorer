@@ -1,0 +1,53 @@
+<div class="row d-flex justify-content-center" [hidden]="Loading == false" style="margin-top: 50px;">
+  <div class="col-lg-12" style="margin: 0 auto; text-align: center;">
+      <img src="../../../assets/loading.gif" style="margin-left: -21%"/>
+  </div>
+</div>
+
+<div [hidden]="Loading == true || isFromNode == true">
+  <div class="row" style="margin-top: 15px">
+    <div class="col-12">
+      <h3>Latest Transactions</h3>
+      <table class="block-table">
+        <thead>
+          <tr>
+            <td>TXN</td>
+            <td>Amount</td>
+            <td>From</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trans of Transactions">
+            <td><a href="#">{{trans.txn}}</a></td>
+            <td>{{trans.amount}}</td>
+            <td><a href="/view-wallet-txns/{{trans.from}}">{{trans.from}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="Loading == true || isFromNode == false">
+  <div class="row" style="margin-top: 15px">
+    <div class="col-12">
+      <h3>Latest Transactions</h3>
+      <table class="block-table">
+        <thead>
+          <tr>
+            <td>TXN</td>
+            <td>Amount</td>
+            <td>To</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trans of Transactions">
+            <td><a href="#">{{trans.txn}}</a></td>
+            <td>{{trans.amount}}</td>
+            <td><a href="/view-wallet-txns/{{trans.to}}">{{trans.to}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

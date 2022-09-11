@@ -1,0 +1,51 @@
+.button-row {
+    margin:auto;
+  }
+
+  .button-row button {
+    display: table-cell;
+    margin-right: 8px;
+  }
+
+  mat-label
+  {
+    font-weight: bold;
+    display: block;
+  }
+  mat-form-field
+  {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  mat-error{
+    display: block;
+    color: red;
+  }
+
+  .nav-item
+  {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 18px;
+  }
+
+
+tbody tr td
+{
+  font-size: 14px;
+}
+
+thead tr td
+{
+  color: rgb(103, 113, 133);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.table-block
+{
+  border: 1px solid rgb(223, 227, 235); 
+  padding-top: 15px; 
+  padding-bottom: 15px;
+}

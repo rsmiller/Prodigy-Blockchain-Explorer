@@ -1,0 +1,29 @@
+
+<div class="row d-flex justify-content-center" style="margin-top: 75px; margin-left: -20%">
+  <div class="col-4">
+    <h3>Create Wallet</h3>
+    <form [formGroup]="createWalletForm" autocomplete="off" novalidate>
+      <div class="row">
+        <div class="col-12">
+          <input type="text" formControlName="username" class="form-control" placeholder="Username">
+          <div class="alert alert-warning" role="alert" *ngIf="hasError('username', 'minlength')">Must have at least 4 characters</div>
+          <div class="alert alert-warning" role="alert" *ngIf="hasError('username', 'maxlength')">That is too many characters</div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 15px">
+        <div class="col-12" >
+          <input type="password" formControlName="password" class="form-control" placeholder="Password">
+          <div class="alert alert-warning" role="alert" *ngIf="hasError('password', 'minlength')">Must have at least 5 characters</div>
+          <div class="alert alert-warning" role="alert" *ngIf="hasError('password', 'maxlength')">That is too many characters</div>
+          <div class="alert alert-warning" role="alert" *ngIf="hasError('password', 'pattern')">Needs at least one letter, one number, and one special character</div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 25px; text-align: center;">
+        <div class="col-12" >
+          <button type="button" class="btn btn-dark" (click)="CreateWallet()" [disabled]="createWalletForm.invalid || Creating == true" >Create New Wallet</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

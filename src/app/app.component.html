@@ -1,0 +1,43 @@
+<body>
+  <div class="container-fluid">
+    <div class="row" style="padding: 25px; padding-bottom: 15px; margin-bottom: 25px; background-color: #121d33; color: white;">
+      <div class="col-3" style=" padding-left: 0 !important;">
+        <a href="/" class="header-link"><h2>Blockchain Explorer</h2></a>
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" name="blockchain_search" placeholder="Search your transaction, an address or a block" (keyup.enter)="DoSearch($event.target.value)">
+      </div>
+    </div>
+    <div class="row" style="margin-top: 15px">
+      <div class="col-2">
+        <nav class="sidebar">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#"> <i class="fa-solid fa-house"></i> Home </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" href="#" routerLink="/charts"> <i class="fa-solid fa-chart-column"></i> Charts </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="/my-certificates"> <i class="fa-solid fa-certificate"></i> My Certificates </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="/exchange"> <i class="fa-solid fa-store"></i> Exchange  </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="/wallet"> <i class="fa-solid fa-wallet"></i> Wallet</a>
+            </li>
+          </ul>
+          </nav>
+      </div>
+      <div class="col-10">
+        <div class="row" >
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<footer >
+  <div>v1.0.0</div>
+</footer>

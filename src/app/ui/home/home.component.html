@@ -1,0 +1,45 @@
+<div class="row" >
+  <div class="col-10 table-block">
+    <h4>Latest Blocks</h4>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <td>Block ID</td>
+          <td>Mined On</td>
+          <td>Order Number</td>
+          <td>Serial Number</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let block of RecentBlocks">
+          <td><a href="/view-block/{{block.blockId}}">{{block.blockId}}</a></td>
+          <td>{{ GetDate(block.minedOn)}}</td>
+          <td><a href="/search/1/{{block.identifier1}}">{{block.identifier1}}</a></td>
+          <td><a href="/search/2/{{block.identifier2}}">{{block.identifier2}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 10px"> 
+  <div class="col-10 table-block" >
+    <h4>Latest Transactions</h4>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <td>TXN</td>
+          <td>Amount</td>
+          <td>To</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of RecentTransactions">
+          <td><a href="/view-txn/{{trans.txn}}">{{trans.txn}}</a></td>
+          <td>{{trans.amount}}</td>
+          <td><a href="/view-wallet-txns/{{trans.to}}">{{trans.to}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

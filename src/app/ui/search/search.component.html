@@ -1,0 +1,73 @@
+<div class="row d-flex justify-content-center" [hidden]="Loading == false" style="margin-top: 50px;">
+  <div class="col-lg-12" style="margin: 0 auto; text-align: center;">
+      <img src="../../../assets/loading.gif" style="margin-left: -21%"/>
+  </div>
+</div>
+<div class="row" [hidden]="Loading == true">
+  <div class="col-10 table-border" [hidden]="!(Blocks.length == 0 && Transactions.length == 0)">
+    <h4>No Results</h4>
+  </div>
+  <!-- Node Wall -->
+  <div class="col-10 table-border" [hidden]="SearchReturnType != 'node-wallet'">
+    <h3>Wallet Transaction Results</h3>
+    <table class="block-table" style="width: 100%;">
+      <thead>
+        <tr>
+          <td>TXN</td>
+          <td>Amount</td>
+          <td>To</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of Transactions">
+          <td><a href="#">{{trans.txn}}</a></td>
+          <td>{{trans.amount}}</td>
+          <td><a href="/view-wallet-txns/{{trans.to}}">{{trans.to}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Wallet transactions -->
+  <div class="col-10 table-border" [hidden]="SearchReturnType != 'wallet'">
+    <h3>Wallet Transaction Results</h3>
+    <table class="block-table" style="width: 100%;">
+      <thead>
+        <tr>
+          <td>TXN</td>
+          <td>Amount</td>
+          <td>From</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of Transactions">
+          <td><a href="#">{{trans.txn}}</a></td>
+          <td>{{trans.amount}}</td>
+          <td><a href="/view-wallet-txns/{{trans.from}}">{{trans.from}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Attribute Search -->
+  <div class="col-10 table-border" [hidden]="!(SearchReturnType == 'attribute' || SearchReturnType == 'block')">
+    <h4>Results</h4>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <td>Block ID</td>
+          <td>Order Number</td>
+          <td>Serial Number</td>
+          <td>Document Type</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let block of Blocks">
+          <td><a href="/view-block/{{block.blockId}}">{{block.blockId}}</a></td>
+          <td><a href="/search/1/{{block.identifier1}}">{{block.identifier1}}</a></td>
+          <td><a href="/search/2/{{block.identifier2}}">{{block.identifier2}}</a></td>
+          <td><a href="/search/3/{{block.identifier3}}">{{block.identifier3}}</a></td>
+          <td><a href="/search/4/{{block.identifier4}}">{{block.identifier4}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

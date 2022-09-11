@@ -1,0 +1,49 @@
+
+<div class="row d-flex justify-content-center" style="margin-top: 75px; margin-left: -20%">
+    <div class="col-4">
+      <form [formGroup]="searchForm" autocomplete="off" novalidate>
+        <input type="text" class="form-control" name="cert_search" formControlName="company_id" placeholder="Enter your company id" (keyup.enter)="SearchCustomer()">
+        <div class="alert alert-warning" role="alert" *ngIf="hasError('company_id', 'maxlength')">That is too many characters</div>
+        <div class="alert alert-warning" role="alert" *ngIf="hasError('company_id', 'isUUID')">Must be a UUID</div>
+      </form>
+    </div>
+    <div class="col-1">
+      <button type="button" class="btn btn-dark" (click)="SearchCustomer()" [disabled]="Searching == true || !IsValidForm()" >Search</button>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center" [hidden]="Searching == false" style="margin-top: 50px;">
+  <div class="col-lg-12" style="margin: 0 auto; text-align: center;">
+      <img src="../../../assets/loading.gif" style="margin-left: -21%"/>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center" [hidden]="!(PerformedSearch == true && Blocks.length == 0)" style="margin-top: 50px; margin-left: -20%">
+  <div class="col-lg-12" style="margin: 0 auto; text-align: center;">
+      No Results Returned
+  </div>
+</div>
+
+<div class="row" [hidden]="Blocks.length == 0" style="margin-top: 35px;">
+  <div class="col-10 table-block">
+    <h4>My Blocks</h4>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <td>Block ID</td>
+          <td>Mined On</td>
+          <td>Order Number</td>
+          <td>Serial Number</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let block of Blocks">
+          <td><a href="/view-block/{{block.blockId}}">{{block.blockId}}</a></td>
+          <td>{{ GetDate(block.minedOn)}}</td>
+          <td><a href="/search/1/{{block.identifier1}}">{{block.identifier1}}</a></td>
+          <td><a href="/search/2/{{block.identifier2}}">{{block.identifier2}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
